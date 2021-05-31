@@ -1,0 +1,263 @@
+﻿<Window x:Class="HOI4_ModificationsConstructor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Редактирование регионов" Height="800" Width="900"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"  
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowState="Maximized">
+    <Window.Resources>
+   
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" 
+                CornerRadius="5">
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Список регионов" Grid.Row="0"
+                       HorizontalAlignment="Center" FontSize="20"
+                       FontWeight="Bold" Padding="10"/>
+
+                <ListBox Grid.Row="1" ItemsSource="{Binding States}"
+             SelectedItem="{Binding SelectedState}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <TextBlock FontSize="18" Text="{Binding Path=Name.Value}" FontWeight="Bold"/>
+                                <TextBlock FontSize="16" Text="{Binding Path=FileName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                    <Button Command="{Binding AddCommand}"
+                        Width="50" Height="50" Margin="5">
+                        <materialDesign:PackIcon Kind="FilePlus" />
+                    </Button>
+                    <Button Command="{Binding RemoveCommand}"
+                        CommandParameter="{Binding SelectedState}"
+                        Width="50" Height="50" Margin="5">
+                        <materialDesign:PackIcon Kind="FileRemove" />
+                    </Button>
+                    <Button Command="{Binding SaveCommand}"
+                        Width="50" Height="50" Margin="5">
+                        <materialDesign:PackIcon Kind="ContentSave" />
+                    </Button>
+                    <Button Command="{Binding OpenCommand}"
+                        Width="50" Height="50" Margin="5">
+                        <materialDesign:PackIcon Kind="FolderOpen" />
+                    </Button>
+                    <Button Width="50" Height="50" Margin="5" IsEnabled="False">
+                        <materialDesign:PackIcon Kind="FileImport" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1"
+                 CornerRadius="5">
+            <Grid Grid.Column="1">
+                <ScrollViewer  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <StackPanel  DataContext="{Binding SelectedState}" Margin="5" Name="lv">
+                        <TextBlock Text="Выбранный регион" HorizontalAlignment="Center"
+                               FontSize="20" FontWeight="Bold" Padding="10"/>
+                        <TextBlock Text="Имя файла" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="FileName" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="ID" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="ID.Value" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="Название" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="Name.Value" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="Население" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="Manpower.Value" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="Категория" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="Category.Value" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="Фактор строительства" FontWeight="Bold"/>
+                        <TextBox>
+                            <Binding Path="BuildingsFactor.Value" UpdateSourceTrigger="PropertyChanged" />
+                        </TextBox>
+                        <TextBlock Text="Непроходим" FontWeight="Bold"/>
+                        <CheckBox IsChecked="{Binding Path=IsImpassable.Value, UpdateSourceTrigger=PropertyChanged}">
+                        </CheckBox>
+                        <TextBlock Text="Провинции" FontWeight="Bold"/>
+                        <Button Command="{Binding DataContext.AddProvinceCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                            Width="100">
+                            <materialDesign:PackIcon Kind="PlusThick"/>
+                        </Button>
+                        <ListBox ItemsSource="{Binding Path=Provinces.Values}"
+                             SelectedItem="{Binding Path=SelectedProvince}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <Button Command="{Binding DataContext.RemoveProvinceCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}"
+                                            CommandParameter="{Binding}">
+                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                        </Button>
+                                        <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" 
+                                                 Width="50"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="Ресурсы" FontWeight="Bold"/>
+                        <Button Width="100" Command="{Binding DataContext.AddResourseCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="PlusThick"/>
+                        </Button>
+                        <ListBox ItemsSource="{Binding Path=Resources.Values}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <Button>
+                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                        </Button>
+                                        <TextBox Text="{Binding Path=ContentName, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text=" = " />
+                                        <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="Владелец" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Path=History.Owner.Value}" />
+                        <TextBlock Text="Эффекты" FontWeight="Bold"/>
+                        <TextBox Text="{Binding Path=History.Effects.Value, UpdateSourceTrigger=PropertyChanged}"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     AcceptsTab="True" 
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                        <TextBlock Text="Очки победы" FontWeight="Bold" />
+                        <Button Width="100" Command="{Binding DataContext.AddVictoryPointCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="PlusThick"/>
+                        </Button>
+                        <ListBox ItemsSource="{Binding Path=History.VictoryPoints}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <Button>
+                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                        </Button>
+                                        <TextBox Text="{Binding Path=Province, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text=" = " />
+                                        <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="Постройки" FontWeight="Bold"/>
+                        <Button Width="100" Command="{Binding DataContext.AddBuildingCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="PlusThick"/>
+                        </Button>
+                        <ListBox ItemsSource="{Binding Path=History.Buildings.Buildings}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                        <Button>
+                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                        </Button>
+                                        <TextBox Text="{Binding Path=ContentName, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text=" = " />
+                                        <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <TextBlock Text="Провинциальные постройки" FontWeight="Bold"/>
+                        <Button Width="100" Command="{Binding DataContext.AddProvinceBuildingCommand, RelativeSource={ RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon Kind="PlusThick"/>
+                        </Button>
+                        <ListBox ItemsSource="{Binding Path=History.Buildings.ProvinceBuildings}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5" Orientation="Vertical">
+                                        <Button>
+                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                        </Button>
+                                        <TextBlock Text="Провинция" />
+                                        <TextBox Text="{Binding Path=ContentName, UpdateSourceTrigger=PropertyChanged}" />
+                                        <TextBlock Text="Постройки" />
+                                        <Button Width="100">
+                                            <materialDesign:PackIcon Kind="PlusThick"/>
+                                        </Button>
+                                        <ListBox ItemsSource="{Binding Path=Values}">
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Margin="5" Orientation="Horizontal">
+                                                        <Button>
+                                                            <materialDesign:PackIcon Kind="DeleteForever" />
+                                                        </Button>
+                                                        <TextBox Text="{Binding Path=ContentName, UpdateSourceTrigger=PropertyChanged}" />
+                                                        <TextBlock Text=" = " />
+                                                        <TextBox Text="{Binding Path=Value, UpdateSourceTrigger=PropertyChanged}" />
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                        </ListBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        
+
+        <Border Grid.Column="2" BorderBrush="Black" BorderThickness="1"
+                 CornerRadius="5">
+            <Grid Grid.Column="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Предпросмотр" Grid.Row="0"
+                       HorizontalAlignment="Center" FontSize="20"
+                       FontWeight="Bold" Padding="10"/>
+                <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          Grid.Row="1" DataContext="{Binding SelectedState}">
+                    
+                        <TextBox Text="{Binding Path= StringView, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"
+                                 IsReadOnly="True" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                 Style="{StaticResource MaterialDesignFilledTextBox}"/>
+                        
+                    
+                </ScrollViewer>
+            </Grid>
+        </Border>
+        
+    </Grid>
+</Window>
