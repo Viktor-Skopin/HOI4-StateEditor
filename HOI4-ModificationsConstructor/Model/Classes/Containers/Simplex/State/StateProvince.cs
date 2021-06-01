@@ -18,6 +18,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private int _value;
+
         public int Value
         {
             get { return _value; }
@@ -26,6 +27,7 @@ namespace HOI4_ModificationsConstructor
                 _value = value;
             }
         }
+
         public string ContentName { get; } //Используется только для идентификации
 
         public string GetString()
@@ -35,6 +37,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -46,6 +49,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get

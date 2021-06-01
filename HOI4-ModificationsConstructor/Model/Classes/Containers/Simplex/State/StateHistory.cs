@@ -21,6 +21,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private StateOwner _owner;
+
         private StateEffects _effects;
         private ObservableCollection<StateVictoryPoints> _victoryPoints;
         private StateBuildings _buildings;
@@ -34,6 +35,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Owner");
             }
         }
+
         public StateEffects Effects
         {
             get { return _effects; }
@@ -43,6 +45,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Effects");
             }
         }
+
         public ObservableCollection<StateVictoryPoints> VictoryPoints
         {
             get { return _victoryPoints; }
@@ -52,6 +55,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("VictoryPoints");
             }
         }
+
         public StateBuildings Buildings
         {
             get { return _buildings; }
@@ -61,8 +65,10 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Buildings");
             }
         }
+
         public List<IClausewitzElement> Elements { get; }
         public string ContentName { get; }
+
         private void MakeList()
         {
             Elements.Clear();
@@ -71,6 +77,7 @@ namespace HOI4_ModificationsConstructor
             Elements.AddRange(VictoryPoints);
             Elements.Add(Buildings);
         }
+
         public string GetString()
         {
             MakeList();
@@ -84,8 +91,10 @@ namespace HOI4_ModificationsConstructor
 
             return result;
         }
+
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

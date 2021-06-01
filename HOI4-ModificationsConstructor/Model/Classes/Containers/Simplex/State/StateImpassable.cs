@@ -17,6 +17,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private bool _value;
+
         public bool Value
         {
             get { return _value; }
@@ -26,7 +27,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         public string ContentName { get; }
+
         public string GetString()
         {
             string result;
@@ -39,6 +42,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

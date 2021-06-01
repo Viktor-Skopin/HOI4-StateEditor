@@ -24,8 +24,7 @@ namespace HOI4_ModificationsConstructor
 
             MakeList();
         }
-        
-        //Основная логика
+
         private StateID _id;
         private StateName _name;
         private StateManpower _manpower;
@@ -37,6 +36,7 @@ namespace HOI4_ModificationsConstructor
         private StateHistory _history;
 
         private Jsbeautifier.Beautifier _beautifier = new Jsbeautifier.Beautifier();
+
         private Jsbeautifier.BeautifierOptions _beautifierOptions = new Jsbeautifier.BeautifierOptions()
         {
             IndentWithTabs = true
@@ -57,6 +57,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private string _fileName;
+
         public string FileName
         {
             get
@@ -207,6 +208,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private string _stringView;
+
         /// <summary>
         /// Сформированная строка.
         /// </summary>
@@ -247,10 +249,8 @@ namespace HOI4_ModificationsConstructor
                 result += $"\n{element.GetString()}";
             }
             result += $"\n}}";
-                     
-            return _beautifier.Beautify(result, _beautifierOptions);
 
-            
+            return _beautifier.Beautify(result, _beautifierOptions);
         }
 
         private void UpdateString()

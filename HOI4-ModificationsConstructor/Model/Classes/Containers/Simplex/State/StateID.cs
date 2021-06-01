@@ -18,6 +18,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private int _value;
+
         public int Value
         {
             get { return _value; }
@@ -27,7 +28,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         public string ContentName { get; }
+
         public string GetString()
         {
             return $"{ContentName} = {Value}";
@@ -35,6 +38,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -46,6 +50,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get
@@ -54,7 +59,7 @@ namespace HOI4_ModificationsConstructor
                 switch (columnName)
                 {
                     case "Value":
-                        if(Value < 0)
+                        if (Value < 0)
                         {
                             error = "ID должен быть неотрицательным целым числом";
                         }

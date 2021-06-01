@@ -18,8 +18,10 @@ namespace HOI4_ModificationsConstructor
 
             Values = new ObservableCollection<StateResource>();
         }
+
         public List<IClausewitzElement> Elements { get; }
         private ObservableCollection<StateResource> _values;
+
         public ObservableCollection<StateResource> Values
         {
             get { return _values; }
@@ -29,12 +31,15 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Values");
             }
         }
+
         public string ContentName { get; }
+
         private void MakeList()
         {
             Elements.Clear();
             Elements.AddRange(Values);
         }
+
         public string GetString()
         {
             MakeList();
@@ -51,11 +56,11 @@ namespace HOI4_ModificationsConstructor
                 return result;
             }
             else return string.Empty;
-            
         }
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

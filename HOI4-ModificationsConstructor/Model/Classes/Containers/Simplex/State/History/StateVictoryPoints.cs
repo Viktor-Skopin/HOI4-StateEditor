@@ -16,6 +16,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private float _value;
+
         public float Value
         {
             get { return _value; }
@@ -25,7 +26,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         private int _province;
+
         public int Province
         {
             get { return _province; }
@@ -35,7 +38,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Province");
             }
         }
+
         public string ContentName { get; }
+
         public string GetString()
         {
             string result = $"{ContentName} = {{";
@@ -48,6 +53,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -59,6 +65,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get
@@ -72,8 +79,9 @@ namespace HOI4_ModificationsConstructor
                             error = "Кол-во очков победы должно быть целым числом и не должно быть меньше единицы";
                         }
                         break;
+
                     case "Province":
-                        if(Province < 0)
+                        if (Province < 0)
                         {
                             error = "Номер провинции должен быть неотрицательным целым числом";
                         }

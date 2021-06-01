@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-
 
 namespace HOI4_ModificationsConstructor
 {
@@ -84,7 +82,7 @@ namespace HOI4_ModificationsConstructor
                               foreach (State state in states)
                               {
                                   States.Add(state);
-                              };                                                          
+                              };
                               _dialogService.ShowMessage("Файл открыт");
                           }
                       }
@@ -97,6 +95,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand addCommand;
+
         /// <summary>
         /// Команда добавления нового региона.
         /// </summary>
@@ -143,6 +142,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand removeCommand;
+
         /// <summary>
         /// Команда удаления выбранного региона.
         /// </summary>
@@ -199,22 +199,24 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _addResourseCommand;
+
         public RelayCommand AddResourseCommand
         {
             get
             {
-                 return _addResourseCommand ??
-                    (_addResourseCommand = new RelayCommand(obj =>
-                    {
-                        StateResource resource = new StateResource();
+                return _addResourseCommand ??
+                   (_addResourseCommand = new RelayCommand(obj =>
+                   {
+                       StateResource resource = new StateResource();
 
-                        SelectedState.Resources.Values.Insert(SelectedState.Resources.Values.Count, resource);
-                    },
-                    (obj) => SelectedState != null));
+                       SelectedState.Resources.Values.Insert(SelectedState.Resources.Values.Count, resource);
+                   },
+                   (obj) => SelectedState != null));
             }
         }
 
         private RelayCommand _removeResourseCommand;
+
         public RelayCommand RemoveResourceCommand
         {
             get
@@ -232,6 +234,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _addVictoryPointCommand;
+
         public RelayCommand AddVictoryPointCommand
         {
             get
@@ -248,6 +251,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _removeVictoryPointCommand;
+
         public RelayCommand RemoveVictoryPointCommand
         {
             get
@@ -265,6 +269,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _addBuildingCommand;
+
         public RelayCommand AddBuildingCommand
         {
             get
@@ -281,6 +286,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _removeBuildingCommand;
+
         public RelayCommand RemoveBuildingCommand
         {
             get
@@ -298,6 +304,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _addProvinceBuildingCommand;
+
         public RelayCommand AddProvinceBuildingCommand
         {
             get
@@ -314,6 +321,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         private RelayCommand _removeProvinceBuildingCommand;
+
         public RelayCommand RemoveProvinceBuildingCommand
         {
             get

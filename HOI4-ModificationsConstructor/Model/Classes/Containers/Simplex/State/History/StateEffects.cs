@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
@@ -17,6 +16,7 @@ namespace HOI4_ModificationsConstructor
         public string ContentName { get; }
 
         private string _value;
+
         public string Value
         {
             get { return _value; }
@@ -26,6 +26,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         public string GetString()
         {
             //Заглушка
@@ -34,6 +35,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

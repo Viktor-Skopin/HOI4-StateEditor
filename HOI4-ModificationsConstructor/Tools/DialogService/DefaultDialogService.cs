@@ -1,6 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Windows;
-using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace HOI4_ModificationsConstructor
 {
@@ -15,7 +14,7 @@ namespace HOI4_ModificationsConstructor
                 InitialDirectory = @"C:\\Users",
                 IsFolderPicker = true
             };
-            if(dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 FolderPath = dialog.FileName;
                 return true;
@@ -35,7 +34,7 @@ namespace HOI4_ModificationsConstructor
                 FolderPath = dialog.FileName;
                 return true;
             }
-            return false;        
+            return false;
         }
 
         public void ShowMessage(string message)

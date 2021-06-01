@@ -16,8 +16,10 @@ namespace HOI4_ModificationsConstructor
 
             Value = "none";
         }
+
         //Основная логика
         private string _value;
+
         public string Value
         {
             get { return _value; }
@@ -27,6 +29,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         public string ContentName { get; }
 
         public string GetString()
@@ -36,6 +39,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -47,6 +51,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get

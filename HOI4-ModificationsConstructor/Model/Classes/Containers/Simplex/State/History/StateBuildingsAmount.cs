@@ -15,6 +15,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private int _value;
+
         public int Value
         {
             get { return _value; }
@@ -24,7 +25,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Value");
             }
         }
+
         private string _contentName;
+
         public string ContentName
         {
             get { return _contentName; }
@@ -34,6 +37,7 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("ContentName");
             }
         }
+
         public string GetString()
         {
             return $"{ContentName} = {Value}";
@@ -41,6 +45,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -52,6 +57,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get
@@ -65,6 +71,7 @@ namespace HOI4_ModificationsConstructor
                             error = "Крол-во построек должно быть целым числом больше нуля";
                         }
                         break;
+
                     case "ContentName":
                         if (!Regex.IsMatch(ContentName, @"^[\w]+$"))
                         {

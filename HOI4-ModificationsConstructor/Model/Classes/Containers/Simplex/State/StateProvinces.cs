@@ -18,7 +18,9 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         public List<IClausewitzElement> Elements { get; }
+
         private ObservableCollection<StateProvince> _values;
+
         public ObservableCollection<StateProvince> Values
         {
             get { return _values; }
@@ -28,12 +30,15 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Values");
             }
         }
+
         public string ContentName { get; }
+
         private void MakeList()
         {
             Elements.Clear();
             Elements.AddRange(Values);
         }
+
         public string GetString()
         {
             MakeList();
@@ -51,6 +56,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

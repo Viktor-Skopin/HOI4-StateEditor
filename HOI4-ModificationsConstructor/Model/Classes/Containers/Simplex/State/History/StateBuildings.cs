@@ -19,6 +19,7 @@ namespace HOI4_ModificationsConstructor
 
         //Основная логика
         private List<StateBuildingsAmount> _buildings;
+
         public List<StateBuildingsAmount> Buildings
         {
             get { return _buildings; }
@@ -28,7 +29,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Buildings");
             }
         }
+
         private List<StateProvinceBuildings> _provinceBuildings;
+
         public List<StateProvinceBuildings> ProvinceBuildings
         {
             get { return _provinceBuildings; }
@@ -38,20 +41,23 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("ProvinceBuildings");
             }
         }
+
         public List<IClausewitzElement> Elements { get; }
         public string ContentName { get; }
+
         private void MakeList()
         {
             Elements.Clear();
             Elements.AddRange(Buildings);
             Elements.AddRange(ProvinceBuildings);
         }
+
         public string GetString()
         {
             MakeList();
 
             string result = $"{ContentName} = {{";
-            foreach(IClausewitzElement element in Elements)
+            foreach (IClausewitzElement element in Elements)
             {
                 result += $"\n{element.GetString()}";
             }
@@ -62,6 +68,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

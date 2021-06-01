@@ -15,12 +15,13 @@ namespace HOI4_ModificationsConstructor
             Elements = new List<IClausewitzElement>();
 
             Values = new List<StateBuildingsAmount>();
-
         }
 
         //Основная логика
         public List<IClausewitzElement> Elements { get; }
+
         private List<StateBuildingsAmount> _values;
+
         public List<StateBuildingsAmount> Values
         {
             get { return _values; }
@@ -30,7 +31,9 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("Values");
             }
         }
+
         private string _contentName;
+
         public string ContentName
         {
             get { return _contentName; }
@@ -40,11 +43,13 @@ namespace HOI4_ModificationsConstructor
                 OnPropertyChanged("ContentName");
             }
         }
+
         private void MakeList()
         {
             Elements.Clear();
             Elements.AddRange(Values);
         }
+
         public string GetString()
         {
             MakeList();
@@ -61,6 +66,7 @@ namespace HOI4_ModificationsConstructor
 
         //Событие изменения
         public event PropertyChangedEventHandler PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)
@@ -72,6 +78,7 @@ namespace HOI4_ModificationsConstructor
         {
             get { throw new NotImplementedException(); }
         }
+
         public string this[string columnName]
         {
             get

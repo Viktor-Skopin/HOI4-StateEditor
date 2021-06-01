@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Diagnostics;
-using System;
 
 namespace HOI4_ModificationsConstructor
 {
@@ -25,8 +24,8 @@ namespace HOI4_ModificationsConstructor
             FileInfo[] fileInfos = info.GetFiles("*.txt");
             string[] fileNames = new string[fileInfos.Length];
 
-            for(int i = 0; i < fileInfos.Length; i++)
-            {           
+            for (int i = 0; i < fileInfos.Length; i++)
+            {
                 State state = parcer.ParseState(files[i]);
                 state.FileName = parcer.ParseFileName(fileInfos[i].Name);
                 states.Add(state);
