@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -9,9 +8,6 @@ namespace HOI4_ModificationsConstructor
     {
         public List<State> Open(string foldername)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             StateParcer parcer = new StateParcer();
 
             string[] files;
@@ -30,9 +26,6 @@ namespace HOI4_ModificationsConstructor
                 state.FileName = parcer.ParseFileName(fileInfos[i].Name);
                 states.Add(state);
             }
-
-            stopwatch.Stop();
-            Debug.WriteLine($"Время импорта - {stopwatch.ElapsedMilliseconds}");
 
             return states;
         }
