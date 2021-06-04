@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Числовой идентификатор региона.
+    /// Класс-контейнер, содержащий информацию о идентификационном номере региона.
     /// </summary>
     public class StateID : IIntContainer, IDataErrorInfo
     {

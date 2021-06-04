@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Очки победы региона.
+    /// Класс-контейнер, содержащий информацию о номере провинции и расположенных в ней очках победы.
     /// </summary>
     public class StateVictoryPoints : IFloatContainer, IDataErrorInfo
     {
@@ -17,6 +17,9 @@ namespace HOI4_ModificationsConstructor
         //Основная логика
         private float _value;
 
+        /// <summary>
+        /// Кол-во очков победы.
+        /// </summary>
         public float Value
         {
             get { return _value; }
@@ -29,6 +32,9 @@ namespace HOI4_ModificationsConstructor
 
         private int _province;
 
+        /// <summary>
+        /// Номер провинции.
+        /// </summary>
         public int Province
         {
             get { return _province; }

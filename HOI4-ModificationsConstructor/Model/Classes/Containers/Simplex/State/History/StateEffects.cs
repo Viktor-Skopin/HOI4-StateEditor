@@ -5,6 +5,9 @@ namespace HOI4_ModificationsConstructor
 {
     public class StateEffects : IStringContainer
     {
+        /// <summary>
+        /// Класс контейнер, содержащий всю информацию, для которой ещё не написан свой класс-контейнер.
+        /// </summary>
         public StateEffects()
         {
             ContentName = "effects";

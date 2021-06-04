@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Номер провинции, принадлежащей региону.
+    /// Класс-контейнер, содержащий информацию о провинции.
     /// </summary>
     public class StateProvince : IIntContainer, IDataErrorInfo
     {
@@ -28,7 +28,7 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
-        public string ContentName { get; } //Используется только для идентификации
+        public string ContentName { get; } //Не выводится в виде кода.
 
         public string GetString()
         {

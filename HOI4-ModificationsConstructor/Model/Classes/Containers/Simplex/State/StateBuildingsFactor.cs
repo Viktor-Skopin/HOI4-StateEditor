@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Кол-во дополнительных ячеек зданий
+    /// Класс-контейнер, содержащий информацию о факторе максимального количества построек региона.
     /// </summary>
     public class StateBuildingsFactor : IFloatContainer, IDataErrorInfo
     {

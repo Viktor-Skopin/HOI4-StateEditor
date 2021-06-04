@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, хранящий информацию о регионе.
+    /// </summary>
     public class State : IMultipleContainer
     {
         public State()
@@ -35,6 +38,7 @@ namespace HOI4_ModificationsConstructor
         private StateResources _resources;
         private StateHistory _history;
 
+        private string _fileName;
         private Jsbeautifier.Beautifier _beautifier = new Jsbeautifier.Beautifier();
 
         private Jsbeautifier.BeautifierOptions _beautifierOptions = new Jsbeautifier.BeautifierOptions()
@@ -42,6 +46,15 @@ namespace HOI4_ModificationsConstructor
             IndentWithTabs = true
         };
 
+        private string _stringView;
+
+        public List<IClausewitzElement> Elements { get; }
+
+        public string ContentName { get; }
+
+        /// <summary>
+        /// Идентификационный номер.
+        /// </summary>
         public StateID ID
         {
             get
@@ -56,8 +69,9 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
-        private string _fileName;
-
+        /// <summary>
+        /// Имя текстового файла, в который будут сохранены данные региона.
+        /// </summary>
         public string FileName
         {
             get
@@ -72,7 +86,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Название.
+        /// Ключ локализации региона. При отсутствии локализации, выполняет функции названия региона.
         /// </summary>
         public StateName Name
         {
@@ -123,7 +137,8 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Фактор строительства.
+        /// Фактор максимального строительства региона. Влияет на максимальное количество доступных
+        /// ячеек строительства.
         /// </summary>
         public StateBuildingsFactor BuildingsFactor
         {
@@ -140,7 +155,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Непроходимость
+        /// Непроходимость. Определяет возможность передвигаться через регион.
         /// </summary>
         public StateImpassable IsImpassable
         {
@@ -157,7 +172,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Привинции.
+        /// Провинции, входящие в состав региона.
         /// </summary>
         public StateProvinces Provinces
         {
@@ -174,7 +189,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Ресурсы.
+        /// Ресурсы, расположенные внутри региона.
         /// </summary>
         public StateResources Resources
         {
@@ -191,7 +206,7 @@ namespace HOI4_ModificationsConstructor
         }
 
         /// <summary>
-        /// Блок данных "History".
+        /// Блок данных содержащий сведения о постройках, владельце и очках победы региона.
         /// </summary>
         public StateHistory History
         {
@@ -207,10 +222,8 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
-        private string _stringView;
-
         /// <summary>
-        /// Сформированная строка.
+        /// Отформатированный код, сформированный из данных региона.
         /// </summary>
         public string StringView
         {
@@ -222,9 +235,9 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
-        public List<IClausewitzElement> Elements { get; }
-        public string ContentName { get; }
-
+        /// <summary>
+        /// Очищает список элементов и заново формирует его.
+        /// </summary>
         private void MakeList()
         {
             Elements.Clear();
@@ -239,6 +252,9 @@ namespace HOI4_ModificationsConstructor
             Elements.Add(History);
         }
 
+        /// <summary>
+        /// Возвращает отформатированный код, сформированный из данных региона.
+        /// </summary>
         public string GetString()
         {
             MakeList();
@@ -250,18 +266,29 @@ namespace HOI4_ModificationsConstructor
             }
             result += $"\n}}";
 
+            //Расстановка табуляций с помощью сторонней библиотеки "Jsbeautifier"
             return _beautifier.Beautify(result, _beautifierOptions);
         }
 
+        /// <summary>
+        /// Обновление содержимого строки с кодом.
+        /// </summary>
         private void UpdateString()
         {
+            //Проверка на количество элементов нужна так как выполнение метода при частично не инициализированных данных приводит к ошибке.
             if (Elements.Count < 9) return;
             else StringView = GetString();
         }
 
-        //Событие изменения
+        /// <summary>
+        /// Событие, возникающее при изменении свойств класса.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Метод, вызываемый при изменении свойств класса.
+        /// </summary>
+        /// <param name="prop">Название сфойства.</param>
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             if (PropertyChanged != null)

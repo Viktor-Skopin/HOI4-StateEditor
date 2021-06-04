@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, содержащий информацию о владельце, постройках и очках победы региона.
+    /// </summary>
     public class StateHistory : IMultipleContainer
     {
         public StateHistory()
@@ -20,12 +23,15 @@ namespace HOI4_ModificationsConstructor
         }
 
         //Основная логика
-        private StateOwner _owner;
 
+        private StateOwner _owner;
         private StateEffects _effects;
         private ObservableCollection<StateVictoryPoints> _victoryPoints;
         private StateBuildings _buildings;
 
+        /// <summary>
+        /// Страна-владелец региона.
+        /// </summary>
         public StateOwner Owner
         {
             get { return _owner; }
@@ -36,6 +42,9 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
+        /// <summary>
+        /// Заглушка. Содержит данные, для которых ещё не написан класс-контейнер.
+        /// </summary>
         public StateEffects Effects
         {
             get { return _effects; }
@@ -46,6 +55,9 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
+        /// <summary>
+        /// Очки победы и их расположение.
+        /// </summary>
         public ObservableCollection<StateVictoryPoints> VictoryPoints
         {
             get { return _victoryPoints; }
@@ -56,6 +68,9 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
+        /// <summary>
+        /// Региональные и провинциальные постройки.
+        /// </summary>
         public StateBuildings Buildings
         {
             get { return _buildings; }

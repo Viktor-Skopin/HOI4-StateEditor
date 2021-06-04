@@ -5,6 +5,9 @@ using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, содержащий список провинций, входящих в состав региона.
+    /// </summary>
     public class StateProvinces : IMultipleContainer
     {
         public StateProvinces()
@@ -21,6 +24,9 @@ namespace HOI4_ModificationsConstructor
 
         private ObservableCollection<StateProvince> _values;
 
+        /// <summary>
+        /// Список провинций.
+        /// </summary>
         public ObservableCollection<StateProvince> Values
         {
             get { return _values; }

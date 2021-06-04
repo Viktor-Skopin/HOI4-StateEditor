@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, содержащий список региональных построек и список провинциальных построек.
+    /// </summary>
     public class StateBuildings : IMultipleContainer
     {
         public StateBuildings()
@@ -20,6 +23,9 @@ namespace HOI4_ModificationsConstructor
         //Основная логика
         private List<StateBuildingsAmount> _buildings;
 
+        /// <summary>
+        /// Региональные постройки.
+        /// </summary>
         public List<StateBuildingsAmount> Buildings
         {
             get { return _buildings; }
@@ -32,6 +38,9 @@ namespace HOI4_ModificationsConstructor
 
         private List<StateProvinceBuildings> _provinceBuildings;
 
+        /// <summary>
+        /// Провинциальные постройки.
+        /// </summary>
         public List<StateProvinceBuildings> ProvinceBuildings
         {
             get { return _provinceBuildings; }

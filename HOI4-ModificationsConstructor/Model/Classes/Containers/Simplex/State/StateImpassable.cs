@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Статус непроходимости региона.
+    /// Класс-контейнер, содержащий информацию непроходимости региона.
     /// </summary>
     public class StateImpassable : IBoolContainer
     {

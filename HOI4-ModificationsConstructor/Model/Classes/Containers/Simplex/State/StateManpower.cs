@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Население региона.
+    /// Класс-контейнер, содержащий информацию о населении региона.
     /// </summary>
     public class StateManpower : IIntContainer, IDataErrorInfo
     {

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Ресурс региона.
+    /// Класс-контейнер, содержащий информацию о типе ресурса и его количестве.
     /// </summary>
     public class StateResource : IIntContainer, IDataErrorInfo
     {
@@ -19,6 +19,9 @@ namespace HOI4_ModificationsConstructor
         //Основная логика
         private int _value;
 
+        /// <summary>
+        /// Кол-во ресурса.
+        /// </summary>
         public int Value
         {
             get { return _value; }
@@ -31,6 +34,9 @@ namespace HOI4_ModificationsConstructor
 
         private string _contentName;
 
+        /// <summary>
+        /// Тип ресурса.
+        /// </summary>
         public string ContentName
         {
             get { return _contentName; }

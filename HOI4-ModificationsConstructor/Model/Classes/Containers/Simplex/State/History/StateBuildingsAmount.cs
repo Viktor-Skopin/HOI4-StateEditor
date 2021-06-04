@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, содержащий информацию о типе постройке и её ранге.
+    /// </summary>
     public class StateBuildingsAmount : IIntContainer, IDataErrorInfo
     {
         public StateBuildingsAmount()
@@ -16,6 +19,9 @@ namespace HOI4_ModificationsConstructor
         //Основная логика
         private int _value;
 
+        /// <summary>
+        /// Ранг постройки.
+        /// </summary>
         public int Value
         {
             get { return _value; }
@@ -28,6 +34,9 @@ namespace HOI4_ModificationsConstructor
 
         private string _contentName;
 
+        /// <summary>
+        /// Тип постройки.
+        /// </summary>
         public string ContentName
         {
             get { return _contentName; }

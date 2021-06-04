@@ -7,6 +7,9 @@ namespace HOI4_ModificationsConstructor
 {
     public class StateOwner : IStringContainer, IDataErrorInfo
     {
+        /// <summary>
+        /// Класс-контейнер, содержащий информацию о стране-владельце региона.
+        /// </summary>
         public StateOwner()
         {
             ContentName = "owner";

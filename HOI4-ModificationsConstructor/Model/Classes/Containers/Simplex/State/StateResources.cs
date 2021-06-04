@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Список ресурсов региона.
+    /// Класс-контейнер, содержащий список ресурсов, имеющихся в регионе.
     /// </summary>
     public class StateResources : IMultipleContainer
     {
@@ -19,9 +19,14 @@ namespace HOI4_ModificationsConstructor
             Values = new ObservableCollection<StateResource>();
         }
 
+        //Основная логика
         public List<IClausewitzElement> Elements { get; }
+
         private ObservableCollection<StateResource> _values;
 
+        /// <summary>
+        /// Список ресурсов, имеющихся в регионе.
+        /// </summary>
         public ObservableCollection<StateResource> Values
         {
             get { return _values; }

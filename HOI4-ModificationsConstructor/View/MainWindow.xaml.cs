@@ -11,7 +11,8 @@ namespace HOI4_ModificationsConstructor
         {
             InitializeComponent();
 
-            DataContext = new StateViewModel(new DefaultDialogService(), new DefaultFileService());
+            //Установка StateViewModel в качестве контекста данного окна.
+            DataContext = new StateViewModel(new StateDialogService(), new StateFileService());
         }
     }
 }

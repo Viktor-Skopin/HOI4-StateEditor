@@ -7,6 +7,9 @@ using System.Runtime.CompilerServices;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс, осуществляющий взаимодействие логической части программы и интерфейса.
+    /// </summary>
     public class StateViewModel
     {
         public StateViewModel(IDialogService dialogService, IFileService fileService)
@@ -25,7 +28,7 @@ namespace HOI4_ModificationsConstructor
         private State _selectedState;
 
         /// <summary>
-        /// Выбранный регион.
+        /// Выбранный пользователем регион.
         /// </summary>
         public State SelectedState
         {
@@ -39,8 +42,12 @@ namespace HOI4_ModificationsConstructor
 
         private IFileService _fileService;
         private IDialogService _dialogService;
+
         private RelayCommand _saveCommand;
 
+        /// <summary>
+        /// Команда сохранения списка регионов в текстовые файлы.
+        /// </summary>
         public RelayCommand SaveCommand
         {
             get
@@ -66,6 +73,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand openCommand;
 
+        /// <summary>
+        /// Команда открытия файлов и извлечения из них информации о регионах.
+        /// </summary>
         public RelayCommand OpenCommand
         {
             get
@@ -165,6 +175,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _addProvinceCommand;
 
+        /// <summary>
+        /// Команда добавления новой провинции.
+        /// </summary>
         public RelayCommand AddProvinceCommand
         {
             get
@@ -182,6 +195,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _removeProvinceCommand;
 
+        /// <summary>
+        /// Команда удаления выбранной провинции.
+        /// </summary>
         public RelayCommand RemoveProvinceCommand
         {
             get
@@ -200,6 +216,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _addResourseCommand;
 
+        /// <summary>
+        /// Команда добавления нового ресурса.
+        /// </summary>
         public RelayCommand AddResourseCommand
         {
             get
@@ -217,6 +236,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _removeResourseCommand;
 
+        /// <summary>
+        /// Команда удаления выбранного ресурса
+        /// </summary>
         public RelayCommand RemoveResourceCommand
         {
             get
@@ -235,6 +257,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _addVictoryPointCommand;
 
+        /// <summary>
+        /// Команда добавления очков победы
+        /// </summary>
         public RelayCommand AddVictoryPointCommand
         {
             get
@@ -252,6 +277,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _removeVictoryPointCommand;
 
+        /// <summary>
+        /// Команда удаления выбранных очков победы
+        /// </summary>
         public RelayCommand RemoveVictoryPointCommand
         {
             get
@@ -270,6 +298,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _addBuildingCommand;
 
+        /// <summary>
+        /// Команда добавления новой постройки
+        /// </summary>
         public RelayCommand AddBuildingCommand
         {
             get
@@ -287,6 +318,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _removeBuildingCommand;
 
+        /// <summary>
+        /// Команда удаления выбранной постройки
+        /// </summary>
         public RelayCommand RemoveBuildingCommand
         {
             get
@@ -305,6 +339,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _addProvinceBuildingCommand;
 
+        /// <summary>
+        /// Команда добавления провинциальной постройки
+        /// </summary>
         public RelayCommand AddProvinceBuildingCommand
         {
             get
@@ -322,6 +359,9 @@ namespace HOI4_ModificationsConstructor
 
         private RelayCommand _removeProvinceBuildingCommand;
 
+        /// <summary>
+        /// Команда удаления выбранной провинйиальной постройки.
+        /// </summary>
         public RelayCommand RemoveProvinceBuildingCommand
         {
             get
@@ -338,6 +378,7 @@ namespace HOI4_ModificationsConstructor
             }
         }
 
+        //Событие изменения параметров
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

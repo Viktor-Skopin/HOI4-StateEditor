@@ -3,7 +3,10 @@ using System.Windows;
 
 namespace HOI4_ModificationsConstructor
 {
-    public class DefaultDialogService : IDialogService
+    /// <summary>
+    /// Класс, осуществляющий получения пути к файлам регионов через диалоговые окна.
+    /// </summary>
+    public class StateDialogService : IDialogService
     {
         public string FolderPath { get; set; }
 

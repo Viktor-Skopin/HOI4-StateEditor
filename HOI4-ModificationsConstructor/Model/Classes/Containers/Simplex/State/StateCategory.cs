@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Категория региона.
+    /// Класс-контейнер, содержащий информацию о категории региона.
     /// </summary>
     public class StateCategory : IStringContainer, IDataErrorInfo
     {

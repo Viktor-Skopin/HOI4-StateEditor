@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace HOI4_ModificationsConstructor
 {
     /// <summary>
-    /// Ключ локализации региона.
+    /// Класс-контейнер, содержащий информацию о ключе локализации региона.
     /// </summary>
     public class StateName : IStringContainer, IDataErrorInfo
     {

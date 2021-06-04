@@ -84,9 +84,9 @@
     <Compile Include="ModelView\RelayCommand.cs" />
     <Compile Include="ModelView\StateViewModel.cs" />
     <Compile Include="Model\Classes\Containers\Simplex\State\StateProvince.cs" />
-    <Compile Include="Tools\DialogService\DefaultDialogService.cs" />
+    <Compile Include="Tools\DialogService\StateDialogService.cs" />
     <Compile Include="Tools\DialogService\IDialogService.cs" />
-    <Compile Include="Tools\FileService\DefaultFileService.cs" />
+    <Compile Include="Tools\FileService\StateFileService.cs" />
     <Compile Include="Tools\FileService\IFileService.cs" />
     <Compile Include="Tools\Parser\StateParcer.cs" />
     <Compile Include="View\MainWindow.xaml.cs">

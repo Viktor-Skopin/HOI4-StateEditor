@@ -4,20 +4,23 @@ using System.Linq;
 
 namespace HOI4_ModificationsConstructor
 {
-    public class DefaultFileService : IFileService
+    /// <summary>
+    /// Класс, осуществляющий сохранение и загрузку данных о регионах.
+    /// </summary>
+    public class StateFileService : IFileService
     {
         public List<State> Open(string foldername)
         {
             StateParcer parcer = new StateParcer();
 
-            string[] files;
-
             List<State> states = new List<State>();
 
-            files = Directory.EnumerateFiles(foldername + @"\history\states", "*.txt").Select(File.ReadAllText).ToArray();
+            //Получение содержимого файлов
+            string[] files = Directory.EnumerateFiles(foldername + @"\history\states", "*.txt").Select(File.ReadAllText).ToArray();
 
-            DirectoryInfo info = new DirectoryInfo(foldername + @"\history\states");
-            FileInfo[] fileInfos = info.GetFiles("*.txt");
+            //Получение информации о файлах
+            FileInfo[] fileInfos = new DirectoryInfo(foldername + @"\history\states").GetFiles("*.txt");
+
             string[] fileNames = new string[fileInfos.Length];
 
             for (int i = 0; i < fileInfos.Length; i++)
@@ -40,9 +43,9 @@ namespace HOI4_ModificationsConstructor
 
                 using (FileStream fs = new FileStream($"{fullPath}\\{state.FileName}.txt", FileMode.Create))
                 {
-                    byte[] arrey = System.Text.Encoding.Default.GetBytes(state.GetString());
+                    byte[] text = System.Text.Encoding.Default.GetBytes(state.GetString());
 
-                    fs.Write(arrey, 0, arrey.Length);
+                    fs.Write(text, 0, text.Length);
                 }
             }
         }

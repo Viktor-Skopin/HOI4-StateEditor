@@ -1,13 +1,31 @@
 ﻿namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Отображает окна открытия и сохранения файла, а также содержит информацию о пути к файлу.
+    /// </summary>
     public interface IDialogService
     {
-        void ShowMessage(string message);   // показ сообщения
+        /// <summary>
+        /// Отображает сообщение с заданным текстом.
+        /// </summary>
+        /// <param name="message">Текст сообщения</param>
+        void ShowMessage(string message);
 
-        string FolderPath { get; set; }   // путь к выбранному файлу
+        /// <summary>
+        /// Путь к папке или файлу.
+        /// </summary>
+        string FolderPath { get; set; }
 
-        bool OpenFileDialog();  // открытие файла
+        /// <summary>
+        /// Отображает окно открытия файла.
+        /// </summary>
+        /// <returns>Возвращяет "true" если выбор прошёл успешно и "false" в случае ошибки.</returns>
+        bool OpenFileDialog();
 
-        bool SaveFileDialog();  // сохранение файла
+        /// <summary>
+        /// Отображает окно сохранения файла.
+        /// </summary>
+        /// <returns>Возвращяет "true" если выбор прошёл успешно и "false" в случае ошибки.</returns>
+        bool SaveFileDialog();
     }
 }

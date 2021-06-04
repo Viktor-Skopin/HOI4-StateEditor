@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace HOI4_ModificationsConstructor
 {
+    /// <summary>
+    /// Класс-контейнер, содержащий информацию о номере провинции и её постройках.
+    /// </summary>
     public class StateProvinceBuildings : IMultipleContainer, IDataErrorInfo
     {
         public StateProvinceBuildings()
@@ -22,6 +25,9 @@ namespace HOI4_ModificationsConstructor
 
         private List<StateBuildingsAmount> _values;
 
+        /// <summary>
+        /// Провинциальные постройки.
+        /// </summary>
         public List<StateBuildingsAmount> Values
         {
             get { return _values; }
@@ -34,6 +40,9 @@ namespace HOI4_ModificationsConstructor
 
         private string _contentName;
 
+        /// <summary>
+        /// Номер провинции.
+        /// </summary>
         public string ContentName
         {
             get { return _contentName; }
